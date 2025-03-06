@@ -64,8 +64,15 @@ export function App() {
             if (newValue === null) {
               return
             }
-
-            await loadTransactionsByEmployee(newValue.id)
+            if (newValue.id === "") {
+              employees?.forEach((e) => {
+                console.log("ff", e)
+                loadAllTransactions()
+              })
+            }
+            if (newValue.id !== "") {
+              await loadTransactionsByEmployee(newValue.id)
+            }
           }}
         />
 
